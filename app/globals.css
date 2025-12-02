@@ -1,0 +1,391 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode - Clean white/gray backgrounds with sage green accents */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+
+    /* Sage green as primary accent color */
+    --primary: 150 30% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 150 35% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 150 30% 45%;
+    --radius: 0.75rem;
+
+    /* Sage green shade variables */
+    --sage-50: #f6f8f6;
+    --sage-100: #e8ede8;
+    --sage-200: #d1dbd1;
+    --sage-300: #a8baa8;
+    --sage-400: #7a9a7a;
+    --sage-500: #5a7d5a;
+    --sage-600: #466446;
+    --sage-700: #385038;
+    --sage-800: #2d402d;
+    --sage-900: #243524;
+
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .dark {
+    /* Dark mode - Neutral dark backgrounds with sage green accents */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Sage green accents for dark mode */
+    --primary: 150 40% 55%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 150 45% 60%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 150 40% 55%;
+
+    /* Dark mode glassmorphism */
+    --glass-bg: rgba(20, 20, 20, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Enhanced focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+}
+
+/* Premium Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(90, 125, 90, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(90, 125, 90, 0.8);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Utility Classes */
+@layer components {
+
+  /* Premium Buttons */
+  .btn-primary {
+    @apply px-8 py-4 rounded-full font-semibold text-white relative overflow-hidden;
+    background: hsl(var(--primary));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(90, 125, 90, 0.4);
+    background: hsl(var(--accent));
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 rounded-full font-semibold relative overflow-hidden;
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(122, 154, 122, 0.3);
+    background: var(--sage-300);
+  }
+
+  /* Glassmorphism */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl p-6;
+  }
+
+  /* Gradient Text */
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--sage-500) 0%, var(--sage-700) 100%);
+  }
+
+  .text-gradient-secondary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--sage-400) 0%, var(--sage-600) 100%);
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--sage-300) 0%, var(--sage-500) 100%);
+  }
+
+  .text-gradient-warm {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, var(--sage-400) 0%, var(--sage-600) 100%);
+  }
+
+  /* Animated Gradients */
+  .bg-gradient-animated {
+    background: linear-gradient(270deg, var(--sage-400), var(--sage-500), var(--sage-600), var(--sage-700));
+    background-size: 800% 800%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  /* Hover Effects */
+  .hover-lift {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(90, 125, 90, 0.6);
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Section Styles */
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-center;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground text-center max-w-2xl mx-auto;
+  }
+
+  /* Shimmer Effect */
+  .shimmer {
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Animation Utilities */
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+
+  .animate-fade-in-down {
+    animation: fade-in-down 0.6s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s ease-out;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+}
